@@ -1,0 +1,203 @@
+﻿<Window x:Class="OrgApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OrgApp"
+        mc:Ignorable="d"
+        Title="KeepClean" Height="650" Width="315">
+
+    <Window.Resources>
+        <Style TargetType="Window">
+            <Setter Property="TextElement.FontFamily" Value="Cascadia Mono Light"/>
+        </Style>
+    </Window.Resources>
+
+    <!-- full window begin -->
+    <Grid Background="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="300"/>
+        </Grid.RowDefinitions>
+
+        <!-- Keep Clean Title -->
+        <Border Grid.Row="0" Margin="0,0,0,0">
+            <Border.Background>
+                <SolidColorBrush Color="FloralWhite"/>
+            </Border.Background>
+            
+            <TextBlock FontWeight="Bold" FontSize="15" HorizontalAlignment="Center" Margin="5,2,0,2">Welcome Back</TextBlock>
+        </Border>
+        
+        
+        <!-- first row begin -->
+        <Border Grid.Row="1">
+
+            <Grid Margin="3,0,3,3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- calendar itself -->
+                <Calendar x:Name="Calendar" Grid.Column="0" Margin="-2,0,0,0"/>
+                
+                <!-- coming up section begin -->
+                <Border Grid.Column="1" CornerRadius="5" Margin="3,4,0,4">
+                    <Border.Background>
+                        <SolidColorBrush Color="FloralWhite"/>
+                    </Border.Background>
+
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap">Coming up</TextBlock>
+                        <Border BorderThickness=".25" BorderBrush="Black"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <DockPanel Grid.Row="0" Margin="0,1,0,1" LastChildFill="True">
+                                <TextBlock x:Name="CU_date1" Text="Date"/>
+                                <Border BorderThickness=".25" Margin="1,0,1,0" BorderBrush="Black"/>
+                                <TextBlock x:Name="CU_context1" Text="Uconn Application" TextWrapping="Wrap"/>
+                            </DockPanel>
+
+                            <DockPanel Grid.Row="1" Margin="0,1,0,1" LastChildFill="True">
+                                <TextBlock x:Name="CU_date2"  Text="Date"/>
+                                <Border BorderThickness=".25" Margin="1,0,1,0" BorderBrush="Black"/>
+                                <TextBlock x:Name="CU_context2" Text="CS Project" TextWrapping="Wrap"/>
+                            </DockPanel>
+
+                            <DockPanel Grid.Row="2" Margin="0,1,0,1" LastChildFill="True">
+                                <TextBlock x:Name="CU_date3"  Text="Date"/>
+                                <Border BorderThickness=".25" Margin="1,0,1,0" BorderBrush="Black"/>
+                                <TextBlock x:Name="CU_context3" Text="Physics Test" TextWrapping="Wrap"/>
+                            </DockPanel>
+
+                            <DockPanel Grid.Row="3" Margin="0,1,0,1" LastChildFill="True">
+                                <TextBlock x:Name="CU_date4"  Text="Date"/>
+                                <Border BorderThickness=".25" Margin="1,0,1,0" BorderBrush="Black"/>
+                                <TextBlock x:Name="CU_contex41" Text="Paper on Africa" TextWrapping="Wrap"/>
+                            </DockPanel>
+
+                        </Grid>
+
+                    </StackPanel>
+
+
+                </Border>
+                <!-- coming up section end-->
+
+            </Grid>
+
+
+
+        </Border>
+        <!-- first row end -->
+
+        <!-- second row begin -->
+        <Border Grid.Row="2" Margin="4,-2,4,4" CornerRadius="5">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- today section begin -->
+                <Border  Grid.Column="0" CornerRadius="5" MinHeight="100" MaxHeight="100">
+                    <Border.Background>
+                        <SolidColorBrush Color="FloralWhite"/>
+                    </Border.Background>
+
+                    <Grid Margin="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0">
+                            <DockPanel HorizontalAlignment="Center">
+                                <TextBlock HorizontalAlignment="Center" >Date:</TextBlock>
+                                <TextBlock x:Name="TODAYS_DATE" Margin="2,0,0,0" Text="DUE TO CHANGE"/>
+                            </DockPanel>
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="1" Margin="0,2,0,2" FontSize="11" >(Temp)</TextBlock>
+
+                        <StackPanel Grid.Row="2">
+                            <TextBlock FontSize="11">For Today:</TextBlock>
+                        </StackPanel>
+
+                    </Grid>
+                </Border>
+                <!-- today section end-->
+
+                <Border Grid.Column="1" Width="4"/>
+
+                <!-- timer section begin -->
+                <Border x:Name="TimerBorder" Grid.Column="2" CornerRadius="5" MinWidth="90" >
+                    <Border.Background>
+                        <SolidColorBrush Color="FloralWhite"/>
+                    </Border.Background>
+
+                    <Grid VerticalAlignment="Stretch" Margin="5,0,5,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">Timer</TextBlock>
+                        
+                        <DockPanel Grid.Row="1" HorizontalAlignment="Center">
+                            <TextBox x:Name="TimerInput_H" FontStyle="Oblique" Background="WhiteSmoke" Width="20">hh</TextBox>
+                            <TextBlock VerticalAlignment="Center">:</TextBlock>
+                            <TextBox x:Name="TimerInput_M" FontStyle="Oblique" Background="WhiteSmoke" Width="20">mm</TextBox>
+                            <TextBlock VerticalAlignment="Center">:</TextBlock>
+                            <TextBox  x:Name="TimerInput_S" FontStyle="Oblique" Background="WhiteSmoke" Width="20">ss</TextBox>
+                        </DockPanel>
+
+                        <Button x:Name="Button_Timer_Start" Click="Button_Timer_Start_Click" Grid.Row="2" Margin="2" HorizontalAlignment="Center">Start</Button>
+                            
+                        <TextBlock x:Name="TimerItself" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">00:00:00</TextBlock>
+
+                    </Grid>
+
+                </Border>
+                <!-- timer section end -->
+
+            </Grid>
+        </Border>
+        <!-- second row end -->
+        
+        <!-- third row begin -->
+        <Border Grid.Row="3" CornerRadius="4" Margin="5,0,5,5">
+            <Border.Background>
+                <SolidColorBrush Color="FloralWhite"/>
+            </Border.Background>
+
+            <TabControl Margin="3">
+                <TabItem Name="Tab1" Header="Tab1"/>
+                <TabItem Name="Tab2" Header="Tab2"/>
+                <TabItem Name="Tab3" Header="Tab3"/>
+                <TabItem Name="Tab4" Header="Tab4"/>
+            </TabControl>
+            
+        </Border>
+        <!-- third row end -->
+        
+        
+
+    </Grid>
+    <!-- full window end-->
+    
+</Window>
