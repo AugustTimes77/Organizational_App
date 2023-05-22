@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -17,9 +18,7 @@ using System.Windows.Threading;
 
 namespace OrgApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+/// main window class 
     public partial class MainWindow : Window
     {
 
@@ -39,6 +38,7 @@ namespace OrgApp
             InitializeTabItemsandTextBoxes();
             LoadTextFromFiles();
 
+            SetDayInMenu();
 
             //initialize font style
             Style = (Style)FindResource(typeof(Window));
@@ -60,7 +60,15 @@ namespace OrgApp
 
         }
 
-        //universal functionality begins
+     //universal functionality begins
+
+
+        private void SetDayInMenu()
+        {
+            string display = DateTime.Now.ToString();
+            display = display.Substring(0, display.Length - 11);
+            TODAYS_DATE.Text = display;
+        }
 
         private string FindFilePath(string folderPath, string fileName)
         {
@@ -83,12 +91,74 @@ namespace OrgApp
 
         // calendar code begins
 
+        //private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    foreach (var selectedDates in Calendar.SelectedDates)
+        //    {
+        //        string DateSelected = selectedDates.ToShortDateString();
+        //        DateSelected = DateSelected.Substring(0, DateSelected.Length - 5);
+
+        //        ComingUp_Date.Text = DateSelected;
+        //    }
+        //}
+
+        //private void Calendar_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    if (e.RightButton == MouseButtonState.Pressed)
+        //    {
+        //        Point position = e.GetPosition(calendarControl);
+        //        var visualHit = VisualTreeHelper.HitTest(calendarControl, position);
+        //        if (visualHit?.VisualHit is FrameworkElement dayButtonClicked)
+        //        {
+        //            if (dayButtonClicked.DataContext is DateTime clickedDate)
+        //            {
+        //                e.Handled = true;
+
+        //                calendarControl.ContextMenu = calendarContextMenu;
+
+        //                MenuItem testMenuItem = new MenuItem();
+        //                testMenuItem.Header = "Test";
+        //                calendarContextMenu.Items.Add(testMenuItem);
+        //            }
+        //        }
+        //    }
+        //}
+
+        private void Calendar_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+
+            Calendar calendar = (Calendar)sender;
+            Point position = Mouse.GetPosition(calendar);
+
+
+            var visualHit = VisualTreeHelper.HitTest(calendar, position)?.VisualHit as FrameworkElement;
+
+            if (visualHit != null && visualHit.DataContext is DateTime clickedDate)
+            {
+                e.Handled = true;
+
+                MenuItem testMenuItem = new MenuItem();
+                testMenuItem.Header = "Test";
+                calendar.ContextMenu.Items.Add(testMenuItem);
+
+            }
+
+        }
+
+
+
+
+        private void AddReminder(object sender, EventArgs e)
+        {
+
+        }
 
 
         // calendar code ends
 
 
         // timer code begin
+
         private void Timer_Tick(object? sender, EventArgs? e)
         {
             if (countdownTime.TotalSeconds > 0)
@@ -196,8 +266,9 @@ namespace OrgApp
                 SaveTextToFile(filePath, textBoxes[i].Text);
             }
         }
-        
-    // notes code ends
+
+
+        // notes code ends
 
 
 
