@@ -13,19 +13,18 @@ Any Inquiries Contact
   - Countdown timer for studing
       - format (hh:mm:ss)
       - displays windows message upon completion
-
-🧰 In Progress
-  - Notes section
+   - Notes section
       - Multiple tabs
       - Type into
       - Save and load previous sessions
 
-📍 Planned
+🧰 In Progress
   - Calendar
-      - Input information into calendar
-      - Allow user to 
+      - Input information into calendar that appears in reminders
   - Reminders
       - Pull data from calendar and show upcoming items
+
+📍 Planned
   - Basic Info Display
       - Small section next to timer
       - Show weather in area
