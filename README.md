@@ -1,5 +1,8 @@
 # Organizational_App by AugustTimes77
 
+!! NO LONGER IN DEVELOPMENT, HAVE SWAPPED OVER TO USING PRISM IN THIS PROJECT FOR PROPER SYSTEM ARCHITECTURE !!
+!! Feel free to look at any mistakes I made and poke fun but the newer version is under a similar name with Prism included !!
+
 This is a small organizational app I am building as a side project, the main reason
 I am building this is to learn the .NET framework to become more familiar with it
 and prepare myself for later situations where I will build more complex applications.
